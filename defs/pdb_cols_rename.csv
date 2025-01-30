@@ -1,0 +1,17 @@
+pdb_name,new_name
+DELDATE,delivery_date
+MATAGE,maternal_age
+race9c,maternal_race
+GAWEEKS,gestational_age
+GRAVIDA,gravidity
+PARA,parity
+MATEDUC,maternal_education
+INSURANCE,insurance
+INSPRIVATE,insurance_private
+INSMEDICAL,insurance_MediCal
+INSMEDICARE,insurance_medicare
+INSKAISER,insurance_kaiser
+INSOTHER,insurance_other
+INSURANCESPEC,insurance_spec
+R_HYPERTENSION,hypertension
+MATDEATH,maternal_death
