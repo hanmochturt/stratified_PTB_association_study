@@ -16,11 +16,13 @@ Query instructions:
 3. Query the included RPL and Control patients' subsets of the following OMOP tables: person, condition_occurrence, observation, procedure_occurrence, and visit_occurrence.
 4. The inputs for Rmd 01 are: the table subsets from #3, the OMOP concept table, and the concept lists in Supplementary File 1.
 
-System requirements: This code was developed and tested using R version 4.0.2 on the macOS Monterey version 12.6.3. Diagnosis aggregation used Phecodes version 1.2, and the mapping files can be downloaded from their website: https://phewascatalog.org/phecodes
+System requirements: This code was developed and tested using R version 4.0.2 on the macOS Monterey version 12.6.3.
 
 Installation guide: To run the code, clone this repository. Cloning typically takes a minute or less.
 
-The data used for our project (UCSF and Stanford EHR) is not publically available. If you would like to set up an official collaboration, email marina.sirota@ucsf.edu. Requests should be processed within a couple of weeks.
+Code and Data Sharing Permissions
+
+The University of California, San Francisco electronic health record data used for our project is not publicly available. If you would like to set up an official collaboration, email marina.sirota@ucsf.edu. If you are a UCSF affiliate with OMOP and CDW access, email hannah.takasuka@ucsf.edu to request the version of this repository with EHR data and exact CDW queries. Requests should be processed within a couple of weeks.
 
 License:
 
