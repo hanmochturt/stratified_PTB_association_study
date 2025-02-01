@@ -1,14 +1,18 @@
 # stratified_PTB_association_study
 
-copied Jackie's RPL readme; will update
+I copied Jackie's RPL readme; work in progress that I am updating
 
 This repository contains the code associated with our paper:
 
-Leveraging electronic health records to identify risk factors for recurrent pregnancy loss across two medical centers
+Pre-conception clinical risk factors differ between spontaneous and indicated preterm birth in a densely phenotyped EHR cohort
 
-Jacquelyn Roger, Feng Xie, Jean Costello, Alice Tang, Jay Liu, Tomiko Oskotsky, Sarah Woldemariam, Idit Kosti, Brian Le, Michael P. Snyder, Linda C. Giudice, Dara Torgerson, Gary M. Shaw, David K. Stevenson, Aleksandar Rajkovic, M. Maria Glymour, Nima Aghaeepour, Hakan Cakmak, Ruth B. Lathi, Marina Sirota
+Jean M. Costello†, Hannah Takasuka†, Jacquelyn Roger, Ophelia Yin, Alice Tang, Tomiko Oskotsky, Marina Sirota*, and John A. Capra*
+†co-first authors
+*co-senior authors
 
-Our study utilized electronic health record (EHR) data that was standardized to the Observational Medical Outcomes Partnership (OMOP) common data model. To replicate this study using another OMOP EHR database, follow the query instructions below and then use the code in these R markdown scripts to filter your patients, aggregate diagnoses, implement analyses, analyze results, and create figures.
+Part of our study utilized electronic health record (EHR) data that was standardized to the Observational Medical Outcomes Partnership (OMOP) common data model. To replicate this study using another OMOP EHR database, follow the query instructions below and then use the code in these R markdown scripts to filter your patients, aggregate diagnoses, implement analyses, analyze results, and create figures.
+
+The other part of our study utilized data column names that are specific to the University of California, San Francisco (i.e., clinician-curated perinatal database (PDB) and Clinical Data Warehouse EHR).
 
 Query instructions:
 1. Query your OMOP database to identify patients that meet the initial inclusion criteria for the RPL group. The initial RPL criteria is: any record of pregnancy loss (as defined in the pregnancy loss, recurrent pregnancy loss, and history of pregnancy loss sections of Supplementary File 1).
@@ -22,7 +26,7 @@ Installation guide: To run the code, clone this repository. Cloning typically ta
 
 Code and Data Sharing Permissions
 
-The University of California, San Francisco electronic health record data used for our project is not publicly available. If you would like to set up an official collaboration, email marina.sirota@ucsf.edu. If you are a UCSF affiliate with OMOP and CDW access, email hannah.takasuka@ucsf.edu to request the version of this repository with EHR data and exact CDW queries. Requests should be processed within a couple of weeks.
+The University of California, San Francisco electronic health record data used for our project is not publicly available. If you would like to set up an official collaboration, email marina.sirota@ucsf.edu. If you are a UCSF affiliate with OMOP and CDW and/or PDB access, email hannah.takasuka@ucsf.edu to request the version of this repository with EHR data and exact CDW and PDB queries. Requests should be processed within a couple of weeks.
 
 License:
 
