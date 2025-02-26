@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Copyright (c) 2021, Ethicon, J&J RAD, All Rights Reserved.
+Hannah Takasuka, PhD student @UCSF Capra Lab, 2021-2024
 
 \brief
     This script formats filenames for testing purposes, adding a datestamp and version to the end
@@ -39,14 +39,14 @@ def find_current_python_folder() -> pathlib.WindowsPath:
 
 
 def find_recent_datetime_file_to_df(base_file: str, folder: str, nrows=None,
-                                    index_col=None) -> pandas.DataFrame:
-    filename = find_recent_datetime_file(base_file, folder)
+                                    index_col=None, exclude=None) -> pandas.DataFrame:
+    filename = find_recent_datetime_file(base_file, folder, exclude)
     print(filename)
     df = pandas.read_csv(filename, nrows=nrows, index_col=index_col)
     return df
 
 
-def find_recent_datetime_file(base_file: str, folder: str) -> str:
+def find_recent_datetime_file(base_file: str, folder: str, exclude=None) -> str:
     """
     Finds the most recent file in the folder based on a datestamp in the filename
     For example, f("hello.txt") = "2050-01-01_hello.txt"
@@ -56,7 +56,11 @@ def find_recent_datetime_file(base_file: str, folder: str) -> str:
     filtered_files = []
     for file in all_files:
         if file_type in file and base_filename in file:
-            filtered_files.append(f"{folder}\{file}")
+            if exclude:
+                if exclude not in file:
+                    filtered_files.append(f"{folder}\{file}")
+            else:
+                filtered_files.append(f"{folder}\{file}")
     latest_file = max(filtered_files, key=os.path.getctime)
     return latest_file
 
