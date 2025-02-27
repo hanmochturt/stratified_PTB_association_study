@@ -77,7 +77,6 @@ DIRECTORY = r"//ars-data-01.sde.net.ucsf.edu/MyResearchShared/sirotam1_shared/Bi
 
 
 def main() -> None:
-    print(DIRECTORY, "base dir begin")
     """Description"""
     if DEMOGRAPHICS_SAVE:
         stdout_origin = sys.stdout
@@ -100,7 +99,7 @@ def main() -> None:
         sys.stdout = stdout_origin
 
 
-def obtain_data(debug=False, base_directory=None, cond_file=None,
+def obtain_data(debug=False, base_directory=DIRECTORY, cond_file=None,
                 births_file=None, reduce_phecodes=False) -> \
         pd.DataFrame:
     """ open relevant csv files to Pandas Dataframes based on directories defined in the constants
@@ -115,7 +114,7 @@ def obtain_data(debug=False, base_directory=None, cond_file=None,
         n_rows = None
     if not cond_file:
         cond_df = file_format.find_recent_datetime_file_to_df(CONDITIONS, directories[
-            DATA_FOLDER], n_rows)
+            DATA_FOLDER], n_rows, exclude="fullphecode")
     else:
         cond_df = pd.read_csv(cond_file, nrows=n_rows)
     births_df = obtain_birth_data(DIRECTORY, births_file, n_rows)
@@ -130,18 +129,7 @@ def obtain_data(debug=False, base_directory=None, cond_file=None,
     return cohort, birth_column_names, phecodes_df
 
 
-def obtain_birth_data(base_directory=None, file=None, n_rows=None) -> pd.DataFrame:
-    directories = set_directories(base_directory)
-    if not file:
-        births_df = file_format.find_recent_datetime_file_to_df(BIRTHS, directories[
-            DATA_FOLDER])
-    else:
-        births_df = pd.read_csv(file, nrows=n_rows)
-    births_df = define_preterm(births_df)
-    return births_df
-
-
-def set_directories(base_directory=None) -> Tuple:
+def set_directories(base_directory=None) -> Dict:
     """create relevant directory names based on defaulting to the parent of the current folder or
     what is user-defined
 
@@ -157,6 +145,16 @@ def set_directories(base_directory=None) -> Tuple:
     for folder in (DEF_FOLDER, DATA_FOLDER, INTERMEDIATE_FOLDER, IMAGE_FOLDER, OUTPUT_FOLDER):
         directories[folder] = str(filepath / folder)
     return directories
+
+
+def obtain_birth_data(base_directory=DIRECTORY, file=None, n_rows=None) -> pd.DataFrame:
+    directories = set_directories(base_directory)
+    if not file:
+        births_df = file_format.find_recent_datetime_file_to_df(BIRTHS, directories[DATA_FOLDER])
+    else:
+        births_df = pd.read_csv(file, nrows=n_rows)
+    births_df = define_preterm(births_df)
+    return births_df
 
 
 def define_preterm(births: pd.DataFrame) -> pd.DataFrame:

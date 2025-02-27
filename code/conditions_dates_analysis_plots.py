@@ -3,6 +3,8 @@
 Hannah Takasuka, rotation in the Capra Lab
 January 2023
 """
+import datetime
+import time
 from typing import Dict, List
 
 import matplotlib
@@ -12,7 +14,6 @@ from mpl_toolkits.axes_grid1.inset_locator import (inset_axes, InsetPosition,
 import numpy as np
 import pandas as pd
 from tableone import TableOne
-import time
 
 import analysis
 import constants
@@ -62,7 +63,7 @@ def get_conds_dates() -> pd.DataFrame:
     directories = analysis.set_directories(analysis.DIRECTORY)
     filename = file_format.find_recent_datetime_file(COND_DATES, directories[analysis.DATA_FOLDER])
     print(filename)
-    print("raw conditions file uploading (this takes ~5 minutes)")
+    print(f"raw conditions file uploading. This takes ~5-13 minutes. Started at {datetime.datetime.now().time()}")
     start_time = time.time()
     conditions_dates = pd.read_csv(filename, encoding="cp1252")
     print(f"raw conditions file uploaded. {(time.time()-start_time)//60} minutes elapsed.")
